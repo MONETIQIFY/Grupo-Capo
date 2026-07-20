@@ -352,6 +352,19 @@
 <body>
   <div class="grain"></div>
 
+  <!-- Hidden static form so Netlify reliably detects the form + all its fields
+       at deploy time. The visible form below submits to this via AJAX. -->
+  <form name="booking" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="text" name="country_code" />
+    <input type="tel" name="phone" />
+    <input type="text" name="event_date" />
+    <input type="text" name="genre" />
+    <textarea name="details"></textarea>
+    <input name="bot-field" />
+  </form>
+
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
     <div class="wrap nav-inner">
@@ -612,6 +625,12 @@
               </div>
               <button type="submit" class="btn btn-solid submit-btn">Send Booking Request <span class="arw">→</span></button>
               <p class="form-note">No spam. Your details are only used to plan your booking.</p>
+              <p id="formError" style="display:none;margin-top:16px;font-size:13px;color:var(--muted)">
+                Sorry — that didn't send. Please email
+                <a href="mailto:grupocapomarbella@gmail.com" style="color:var(--white);text-decoration:underline">grupocapomarbella@gmail.com</a>
+                or <a href="https://wa.me/447579814127" style="color:var(--white);text-decoration:underline">WhatsApp us</a>
+                and we'll sort your booking.
+              </p>
             </form>
             <div class="thanks" id="thanks">
               <div class="mk">✓</div>
@@ -718,10 +737,15 @@
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data })
         .then(function (res) {
           if (res && res.ok) { showThanks(); }
-          else { form.submit(); }
+          else { showError(); }
         })
-        .catch(function () { form.submit(); });
+        .catch(function () { showError(); });
     });
+    function showError() {
+      submitting = false;
+      var el = document.getElementById('formError');
+      if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+    }
     function showThanks() {
       form.style.display = 'none';
       var t = document.getElementById('thanks'); t.classList.add('show');
