@@ -26,7 +26,8 @@ backend needed.
 - View entries: Netlify dashboard → your site → **Forms** → `booking`.
 - Get emailed on every request: **Site settings → Forms → Form notifications →
   Add notification → Email** → send to `grupocapomarbella@gmail.com`.
-- Fields captured: `name`, `email`, `phone`, `event_date`, `genre`, `details`.
+- Fields captured: `name`, `email`, `country_code`, `phone`, `event_date`,
+  `genre`, `details`.
 
 > Netlify only starts capturing after the first deploy — submit one test booking
 > once the site is live to confirm it lands in your dashboard.

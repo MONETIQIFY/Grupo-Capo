@@ -706,11 +706,21 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     var form = document.getElementById('bookingForm');
+    var submitting = false;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (submitting) return;
+      submitting = true;
       var data = new URLSearchParams(new FormData(form)).toString();
+      // POST to Netlify. On success show the inline thank-you; if the AJAX call
+      // fails for any reason, fall back to a native submit so Netlify still
+      // captures the entry (nothing is ever silently lost).
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data })
-        .then(function () { showThanks(); }).catch(function () { showThanks(); });
+        .then(function (res) {
+          if (res && res.ok) { showThanks(); }
+          else { form.submit(); }
+        })
+        .catch(function () { form.submit(); });
     });
     function showThanks() {
       form.style.display = 'none';
