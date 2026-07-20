@@ -20,15 +20,15 @@
        GRUPO CAPO — monochrome editorial system
        ========================================================= */
     :root {
-      --bg: #0b0b0b;
-      --bg-2: #101010;
-      --panel: #141414;
-      --line: rgba(255,255,255,0.13);
-      --line-soft: rgba(255,255,255,0.07);
-      --text: #f3f1ec;
-      --muted: #9a968e;
-      --muted-2: #6f6c66;
-      --white: #ffffff;
+      --bg: #f7f5f0;          /* paper / primary */
+      --bg-2: #efece4;        /* alternating sections */
+      --panel: #ffffff;
+      --line: rgba(20,17,12,0.16);
+      --line-soft: rgba(20,17,12,0.08);
+      --text: #17130d;
+      --muted: #6b675e;
+      --muted-2: #a39e93;
+      --white: #17130d;       /* semantic "ink" accent (buttons, borders, marks) */
       --serif: "Cormorant Garamond", Georgia, serif;
       --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
     }
@@ -43,7 +43,7 @@
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-    ::selection { background: #fff; color: #000; }
+    ::selection { background: var(--white); color: var(--bg); }
 
     h1, h2, h3, .serif { font-family: var(--serif); font-weight: 400; letter-spacing: 0; }
 
@@ -53,7 +53,7 @@
     /* Subtle film grain for atmosphere (not a solid flat background) */
     .grain {
       position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .035;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     /* Section label: "01 — WHAT WE DO" */
@@ -81,7 +81,7 @@
     }
     .btn .arw { transition: transform .35s ease; }
     .btn:hover .arw { transform: translateX(5px); }
-    .btn-solid { background: var(--white); color: #000; }
+    .btn-solid { background: var(--white); color: var(--bg); }
     .btn-solid:hover { background: transparent; color: var(--white); }
     .btn-ghost { background: transparent; color: var(--white); border-color: var(--line); }
     .btn-ghost:hover { border-color: var(--white); }
@@ -113,7 +113,7 @@
       transition: background .5s ease, border-color .5s ease, backdrop-filter .5s ease;
       border-bottom: 1px solid transparent;
     }
-    header.nav.scrolled { background: rgba(11,11,11,.72); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-bottom-color: var(--line-soft); }
+    header.nav.scrolled { background: rgba(247,245,240,.82); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-bottom-color: var(--line-soft); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 84px; }
     .nav-links { display: none; gap: 40px; }
     .nav-links a { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400; color: var(--muted); transition: color .3s; }
@@ -124,7 +124,7 @@
     .burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .burger.open span:nth-child(2) { opacity: 0; }
     .burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-    .mobile-menu { overflow: hidden; max-height: 0; transition: max-height .45s ease; background: rgba(11,11,11,.98); border-top: 1px solid var(--line-soft); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+    .mobile-menu { overflow: hidden; max-height: 0; transition: max-height .45s ease; background: rgba(247,245,240,.98); border-top: 1px solid var(--line-soft); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
     .mobile-menu.open { max-height: 460px; }
     .mobile-menu .wrap { display: flex; flex-direction: column; gap: 2px; padding-top: 22px; padding-bottom: 30px; }
     .mobile-menu a { padding: 15px 4px; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; color: var(--muted); border-bottom: 1px solid var(--line-soft); }
@@ -211,12 +211,12 @@
       display: flex; flex-direction: column; transition: background .4s ease, color .4s ease;
       font-family: var(--sans);
     }
-    .genre:hover { background: var(--white); color: #000; }
+    .genre:hover { background: var(--white); color: var(--bg); }
     .genre .gno { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--muted-2); transition: color .4s; }
-    .genre:hover .gno { color: rgba(0,0,0,.45); }
+    .genre:hover .gno { color: rgba(247,245,240,.5); }
     .genre h3 { font-family: var(--serif); font-weight: 400; font-size: 26px; margin: 20px 0 8px; color: inherit; }
     .genre p { font-size: 13.5px; color: var(--muted); margin: 0; flex: 1; transition: color .4s; }
-    .genre:hover p { color: rgba(0,0,0,.6); }
+    .genre:hover p { color: rgba(247,245,240,.7); }
     .genre .gbook { margin-top: 18px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; }
 
     /* Network — two columns of type rows */
@@ -236,7 +236,7 @@
 
     /* Vision */
     .vision { padding: 128px 0; text-align: center; position: relative; overflow: hidden; }
-    .vision .ghost { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-family: var(--serif); font-weight: 500; font-size: clamp(240px, 46vw, 620px); line-height: 1; color: rgba(255,255,255,0.022); letter-spacing: -0.05em; pointer-events: none; white-space: nowrap; }
+    .vision .ghost { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-family: var(--serif); font-weight: 500; font-size: clamp(240px, 46vw, 620px); line-height: 1; color: rgba(20,17,12,0.045); letter-spacing: -0.05em; pointer-events: none; white-space: nowrap; }
     .vision blockquote { position: relative; margin: 0 auto; max-width: 20ch; font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(28px, 5vw, 52px); line-height: 1.24; }
     .vision cite { position: relative; display: block; margin-top: 40px; font-family: var(--sans); font-style: normal; font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--muted); }
 
@@ -268,6 +268,18 @@
     .field input::placeholder, .field textarea::placeholder { color: var(--muted-2); }
     .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--white); }
 
+    /* Phone with country dial-code select */
+    .phone-row { display: flex; gap: 14px; align-items: flex-end; }
+    .phone-row select {
+      -webkit-appearance: none; appearance: none; background: transparent; border: 0;
+      border-bottom: 1px solid var(--line); color: var(--text); padding: 10px 22px 10px 0;
+      font-size: 16px; font-family: var(--sans); font-weight: 300; border-radius: 0; cursor: pointer; flex: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2317130d' stroke-width='1.2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 2px center; background-size: 9px;
+    }
+    .phone-row select:focus { outline: none; border-bottom-color: var(--white); }
+    .phone-row input { flex: 1; min-width: 0; }
+
     .pill-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
     .pills { display: flex; flex-wrap: wrap; gap: 12px; }
     .pill input { position: absolute; opacity: 0; width: 0; height: 0; }
@@ -277,7 +289,7 @@
       transition: all .3s;
     }
     .pill span:hover { border-color: var(--white); color: var(--white); }
-    .pill input:checked + span { background: var(--white); color: #000; border-color: var(--white); }
+    .pill input:checked + span { background: var(--white); color: var(--bg); border-color: var(--white); }
     .pill input:focus-visible + span { outline: 1px solid var(--white); outline-offset: 2px; }
 
     .submit-btn { width: 100%; margin-top: 40px; }
@@ -332,7 +344,7 @@
     .js .hero.ready .hload.d4 { transition-delay: .46s; }
 
     /* Floating mobile CTA */
-    .float-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: block; text-align: center; background: var(--white); color: #000; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500; padding: 17px; padding-bottom: max(17px, env(safe-area-inset-bottom)); }
+    .float-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: block; text-align: center; background: var(--white); color: var(--bg); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500; padding: 17px; padding-bottom: max(17px, env(safe-area-inset-bottom)); }
     @media (min-width: 960px) { .float-cta { display: none; } }
     @media (max-width: 959px) { footer.site { padding-bottom: 84px; } }
   </style>
@@ -345,7 +357,8 @@
     <div class="wrap nav-inner">
       <a href="#top" class="logo" aria-label="Grupo Capo — home">
         <!-- Recreated mark. To use the original file, replace this block with:
-             <img src="assets/logo.png" alt="Grupo Capo" style="height:52px;filter:invert(1)"> -->
+             <img src="assets/logo.png" alt="Grupo Capo" style="height:52px">
+             (the theme is light, so a black-on-white logo needs no filter) -->
         <span class="mono">gc</span>
         <span class="stack">
           <span class="name">Grupo Capo</span>
@@ -546,10 +559,47 @@
               <div class="field-grid">
                 <div class="field"><label for="name">Full Name <span class="req">*</span></label><input id="name" name="name" type="text" placeholder="Your name" required /></div>
                 <div class="field"><label for="email">Email <span class="req">*</span></label><input id="email" name="email" type="email" placeholder="you@email.com" required /></div>
-                <div class="field"><label for="phone">Phone / WhatsApp <span class="req">*</span></label><input id="phone" name="phone" type="tel" placeholder="+44 ..." required /></div>
+                <div class="field"><label for="phone">Phone / WhatsApp <span class="req">*</span></label>
+                  <div class="phone-row">
+                    <select id="country_code" name="country_code" aria-label="Country dialling code">
+                      <option value="+44" selected>🇬🇧 +44</option>
+                      <option value="+34">🇪🇸 +34</option>
+                      <option value="+353">🇮🇪 +353</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+49">🇩🇪 +49</option>
+                      <option value="+31">🇳🇱 +31</option>
+                      <option value="+32">🇧🇪 +32</option>
+                      <option value="+351">🇵🇹 +351</option>
+                      <option value="+39">🇮🇹 +39</option>
+                      <option value="+41">🇨🇭 +41</option>
+                      <option value="+43">🇦🇹 +43</option>
+                      <option value="+30">🇬🇷 +30</option>
+                      <option value="+48">🇵🇱 +48</option>
+                      <option value="+46">🇸🇪 +46</option>
+                      <option value="+47">🇳🇴 +47</option>
+                      <option value="+45">🇩🇰 +45</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+1">🇨🇦 +1</option>
+                      <option value="+971">🇦🇪 +971</option>
+                      <option value="+974">🇶🇦 +974</option>
+                      <option value="+966">🇸🇦 +966</option>
+                      <option value="+212">🇲🇦 +212</option>
+                      <option value="+61">🇦🇺 +61</option>
+                      <option value="+7">🇷🇺 +7</option>
+                      <option value="+90">🇹🇷 +90</option>
+                      <option value="+55">🇧🇷 +55</option>
+                      <option value="+52">🇲🇽 +52</option>
+                      <option value="+27">🇿🇦 +27</option>
+                      <option value="+234">🇳🇬 +234</option>
+                      <option value="+91">🇮🇳 +91</option>
+                      <option value="+00">🌍 Other</option>
+                    </select>
+                    <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="7579 814127" required />
+                  </div>
+                </div>
                 <div class="field"><label for="eventdate">Event Date</label><input id="eventdate" name="event_date" type="text" placeholder="e.g. 14 Aug 2026" /></div>
                 <div class="field full">
-                  <div class="pill-label">Genre You Want <span class="req" style="color:#fff">*</span></div>
+                  <div class="pill-label">Genre You Want <span style="color:var(--white)">*</span></div>
                   <div class="pills">
                     <label class="pill"><input type="radio" name="genre" value="Afrobeats" required /><span>Afrobeats</span></label>
                     <label class="pill"><input type="radio" name="genre" value="UK Hip Hop" /><span>UK Hip Hop</span></label>
@@ -582,7 +632,7 @@
       <div class="contact-list">
         <a class="contact-row" href="mailto:grupocapomarbella@gmail.com"><span class="k">Email</span><span class="v">grupocapomarbella@gmail.com</span></a>
         <a class="contact-row" href="tel:+447579814127"><span class="k">Phone · WhatsApp</span><span class="v">+44 7579 814127</span></a>
-        <a class="contact-row" href="https://instagram.com/groupcapo" target="_blank" rel="noopener"><span class="k">Instagram</span><span class="v">@groupcapo</span></a>
+        <a class="contact-row" href="https://instagram.com/grupocapo" target="_blank" rel="noopener"><span class="k">Instagram</span><span class="v">@grupocapo</span></a>
       </div>
     </div>
   </section>
