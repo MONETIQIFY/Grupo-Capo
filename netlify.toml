@@ -1,0 +1,12 @@
+# Netlify deploy config for the Grupo Capo landing page.
+#
+# It's a static site — no build step needed.
+# When connecting this repo in the Netlify UI, just leave the build command
+# empty and deploy. Netlify serves index.html from the repo root.
+#
+# Form submissions land in your Netlify dashboard under Forms, and you can turn
+# on email notifications there (Site settings -> Forms -> Form notifications).
+
+[build]
+  publish = "."
+  command = ""
